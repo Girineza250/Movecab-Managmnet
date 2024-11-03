@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Welcome to MoveCab - Cab Booking Made Easy</title>
+  <style>
+    /* General Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Body Styling with Background Image */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-image: url('/image/imghome..jpeg'); /* Use relative path to the static folder */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      padding: 20px;
+    }
+
+    /* Overlay Effect */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Dark overlay for text contrast */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: -1;
+    }
+
+    /* Content Container */
+    .content-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    /* Header and Subheader */
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+      color: #f1f1f1;
+    }
+
+    /* Navigation Bar */
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    nav a:hover {
+      background-color: #007acc;
+    }
+
+    /* Action Buttons */
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .button-group a {
+      padding: 12px 25px;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .button-group a:hover {
+      background-color: #005f99;
+    }
+
+    /* Footer */
+    footer {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+      color: #ddd;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background Overlay for Text Contrast -->
+<div class="overlay"></div>
+
+<!-- Navigation Bar -->
+<nav>
+  <a th:href="@{/home}">Home</a>
+  <a th:href="@{/register}">Register</a>
+  <a th:href="@{/login}">Login</a>
+</nav>
+
+<!-- Main Content Section -->
+<div class="content-container">
+  <h1>Welcome to MoveCab</h1>
+  <p>Experience seamless cab booking at your fingertips with MoveCab Management System.</p>
+
+  <!-- Action Buttons -->
+  <div class="button-group">
+    <a th:href="@{/register}">Register</a>
+    <a th:href="@{/login}">Login</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 MoveCab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

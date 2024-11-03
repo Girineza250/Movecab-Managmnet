@@ -1,0 +1,41 @@
+<!-- Chart -->
+<canvas id="chart" width="400" height="200"></canvas>
+
+<script>
+  // Fetch user role statistics
+  fetch('/admin/user-role-stats')
+          .then(response => response.json())
+          .then(data => {
+            const roles = Object.keys(data);
+            const roleCounts = Object.values(data);
+
+            // Create the chart
+            const ctx = document.getElementById('chart').getContext('2d');
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: roles,
+                datasets: [{
+                  label: 'Number of Users per Role',
+                  data: roleCounts,
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          })
+          .catch(error => console.error('Error fetching user role statistics:', error));
+</script>
+
+</div>
+
+</body>
+

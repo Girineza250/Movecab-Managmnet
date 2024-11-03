@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Dashboard</title>
+  <style>
+    /* General Reset and Styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #e8baba;
+      padding: 20px;
+    }
+
+    /* Navigation Bar */
+    nav {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      padding: 10px 0;
+      background-color: #1e90ff;
+      border-radius: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffdead;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    /* Main Section */
+    main {
+      width: 100%;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    main h2 {
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input,
+    form select {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    form button {
+      padding: 10px;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #007acc;
+    }
+
+    /* Message and Login Link */
+    p {
+      text-align: center;
+      color: #333;
+    }
+
+    p a {
+      color: #1e90ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    p a:hover {
+      color: #007acc;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <a th:href="@{/home}">Home</a>
+  <a th:href="@{/register}">Register</a>
+  <a th:href="@{/login}">Login</a>
+</nav>
+
+<!-- Header Section -->
+<header>
+  <h1>Register for the MoveCab Management System</h1>
+</header>
+
+<!-- Main Section -->
+<main>
+  <h2>Create an Account</h2>
+
+  <!-- Registration Form -->
+  <form action="#" th:action="@{/register}" method="post" th:object="${user}">
+    <input type="text" th:field="*{username}" placeholder="Username" required>
+    <input type="email" th:field="*{email}" placeholder="Email" required>
+    <input type="password" th:field="*{password}" placeholder="Password" required>
+
+    <!-- Role selection -->
+    <select th:field="*{role}" required>
+      <option value="" disabled selected>Select your role</option>
+      <option value="ROLE_USER">Passenger</option>
+      <option value="ROLE_SELLER">Manager</option>
+    </select>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <!-- Message and Login Link -->
+  <p th:text="${message}"></p>
+  <p><a th:href="@{/login}">Already have an account? Log in</a></p>
+</main>
+
+</body>
+</html>
